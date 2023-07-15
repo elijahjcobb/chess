@@ -32,4 +32,5 @@ export interface Functions {
   possibleMoves(index: number): number[];
   movePiece(from: number, to: number): void;
   getU8Array(pointer: number): number[];
+  moveAi(): void;
 }

@@ -137,5 +137,7 @@ export function Board({
 		<code style={{ color: 'white', fontSize: 32 }}>Status: {GameState[gameState]}</code>
 		<br />
 		<code style={{ color: 'white', fontSize: 32 }}>Turn: {PieceColor[turn]}</code>
+		<br />
+		{/* <button onClick={wasm.moveAi} style={{ padding: 8 }}>AI</button> */}
 	</>
 }

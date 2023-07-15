@@ -40,7 +40,7 @@ export class Game {
 
   public constructor() {
     const data = GameData.empty();
-    this.ai = new AI(PieceColor.White, data);
+    this.ai = new AI(PieceColor.White, data, this.movePiece);
     const pieces = new StaticArray<Piece>(64);
     const state = GameState.Turn;
     const turn = PieceColor.Black;
@@ -89,6 +89,7 @@ export class Game {
   public canPieceMoveTo(from: u8, to: u8): bool {
     return this.data.pieces[from].pieceCanMoveTo(Position.fromIndex(to));
   }
+
   public possibleMovesForIndex(index: u8): u8[] {
     return this.data.pieces[index]
       .piecePossibleMoves()

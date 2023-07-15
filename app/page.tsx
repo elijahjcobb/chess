@@ -60,6 +60,10 @@ async function initWasm(): Promise<Functions> {
       // @ts-expect-error - ignore this
       return helpers.canPieceMove(from, to);
     },
+    moveAi: (): boolean => {
+      // @ts-expect-error - ignore this
+      return helpers.moveAi();
+    },
     possibleMoves: (index: number): number[] => {
       // @ts-expect-error - ignore this
       const ptr = helpers.possibleMoves(index) as unknown as number;

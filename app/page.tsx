@@ -26,8 +26,11 @@ async function initWasm(): Promise<Functions> {
     },
   }
 
+  const isProd = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+  const url = isProd ? '/build/release.wasm' : '/build/debug.wasm'
+
   const wasm = await loader.instantiate(
-    fetch("/build/debug.wasm"),
+    fetch(url),
     imports
   )
 

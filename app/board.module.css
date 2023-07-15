@@ -1,0 +1,68 @@
+.board {
+  --color: black;
+  --gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  height: 90vh;
+  aspect-ratio: 1;
+  gap: var(--gap);
+  border: solid var(--gap) var(--color);
+  background: var(--color);
+  justify-items: center;
+  align-items: center;
+}
+
+.square {
+  background: gray;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blackSquare {
+  background: darkslategrey;
+}
+
+.pieceIcon {
+  --size: 60%;
+  width: var(--size);
+  height: var(--size);
+  color: #eee;
+  transition: 250ms ease-in-out;
+}
+
+.square:hover .pieceIcon,
+.squareSelected .pieceIcon {
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+.squareSelected .pieceIcon {
+  opacity: 0.5;
+}
+
+.squareHighlighted {
+  background: rgba(30, 144, 255, 0.65);
+  cursor: pointer;
+}
+
+.squareKillable {
+  background: rgba(255, 0, 0, 0.65);
+}
+
+.squareHighlighted:hover .pieceIcon,
+.squareDisabled:hover .pieceIcon {
+  transform: none;
+}
+
+.pieceIconBlack {
+  color: #222;
+}
+
+.squareDisabled:hover,
+.squareDisabled:hover .pieceIcon {
+  cursor: not-allowed !important;
+}

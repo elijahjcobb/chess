@@ -1,0 +1,32 @@
+{
+  "name": "chess",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "compile": "npm run asbuild:debug"
+  },
+  "dependencies": {
+    "@assemblyscript/loader": "^0.27.5",
+    "@types/node": "20.4.2",
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "clsx": "^1.2.1",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.10",
+    "next": "13.4.10",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.27.5"
+  }
+}

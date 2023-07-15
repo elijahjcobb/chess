@@ -2,13 +2,8 @@
 
 import loader from "@assemblyscript/loader";
 import { useEffect, useState } from "react";
-import * as WASM from "@/public/build/debug";
 import { Board } from "./board";
 import { Functions, PieceType, PieceColor, Square, GameState } from "./types";
-
-type WASMTypes = typeof WASM;
-
-
 
 async function initWasm(): Promise<Functions> {
 
@@ -36,8 +31,6 @@ async function initWasm(): Promise<Functions> {
 
   helpers = wasm.exports;
 
-  const funcs = wasm.exports as unknown as WASMTypes;
-
   return {
     getGameState: () => {
       // @ts-expect-error - ignore this
@@ -64,14 +57,17 @@ async function initWasm(): Promise<Functions> {
       }
     },
     canPieceMove: (from: number, to: number): boolean => {
-      return funcs.canPieceMove(from, to);
+      // @ts-expect-error - ignore this
+      return helpers.canPieceMove(from, to);
     },
     possibleMoves: (index: number): number[] => {
-      const ptr = funcs.possibleMoves(index) as unknown as number;
+      // @ts-expect-error - ignore this
+      const ptr = helpers.possibleMoves(index) as unknown as number;
       return Array.from(wasm.exports.__getInt8Array(ptr));
     },
     movePiece: (from: number, to: number) => {
-      funcs.movePiece(from, to);
+      // @ts-expect-error - ignore this
+      helpers.movePiece(from, to);
     },
     getU8Array: (pointer: number) => {
       return Array.from(wasm.exports.__getInt8Array(pointer));

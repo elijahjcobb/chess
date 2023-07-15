@@ -51,9 +51,7 @@ function BoardSquare({
 		if (gameState === GameState.Complete) return true;
 		if (highlighted) return false;
 		if (square.type === PieceType.Empty) return false;
-		if (gameState === GameState.Turn && turn === PieceColor.White && square.color !== PieceColor.White) return true;
-		if (gameState === GameState.Turn && turn === PieceColor.Black && square.color !== PieceColor.Black) return true;
-		return false;
+		return turn !== square.color;
 	}, [gameState, highlighted, square.color, square.type, turn]);
 
 	const handleLeftClick = useCallback(() => {

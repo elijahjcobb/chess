@@ -1,9 +1,9 @@
-import { Functions, GameState, PieceColor, PieceType, Square } from "./page";
 import styles from "./board.module.css";
 import type { IconType } from "react-icons";
 import { FaChessKing, FaChessQueen, FaChessPawn, FaChessBishop, FaChessKnight, FaChessRook } from "react-icons/fa";
 import clsx from "clsx";
 import { MouseEvent, useCallback, useMemo, useState } from "react";
+import { PieceType, GameState, PieceColor, Functions, Square } from "./types";
 
 function pieceIcon(type: PieceType): IconType | null {
 	switch (type) {
@@ -24,7 +24,7 @@ function pieceIcon(type: PieceType): IconType | null {
 	}
 }
 
-function Square({
+function BoardSquare({
 	square,
 	index,
 	onLeftClick,
@@ -124,7 +124,7 @@ export function Board({
 
 	return <>
 		<div className={styles.board}>
-			{squares.map((square, i) => <Square
+			{squares.map((square, i) => <BoardSquare
 				gameState={gameState}
 				onSelectClick={handleSelectClick}
 				onLeftClick={handleLeftClick}

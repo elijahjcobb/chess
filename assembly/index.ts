@@ -17,3 +17,7 @@ export function possibleMoves(index: u8): u8[] {
 export function movePiece(from: u8, to: u8): void {
   game.movePiece(from, to);
 }
+
+export function moveAi(): void {
+  game.moveAi();
+}

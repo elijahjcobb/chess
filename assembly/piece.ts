@@ -1,23 +1,23 @@
-import { Game } from "./game";
+import { GameData } from "./game";
 import { Position } from "./position";
 import { PieceType, PieceColor } from "./types";
 
 export abstract class Piece {
   public readonly type: PieceType;
   public readonly color: PieceColor;
-  protected game: Game;
+  protected data: GameData;
   public position: Position;
 
   public constructor(
     type: PieceType,
     color: PieceColor,
     index: u8,
-    game: Game
+    data: GameData
   ) {
     this.type = type;
     this.color = color;
     this.position = Position.fromIndex(index);
-    this.game = game;
+    this.data = data;
   }
 
   public pieceCanMoveTo(position: Position): bool {
@@ -47,8 +47,8 @@ export abstract class Piece {
 
   public enemies(): Piece[] {
     const enemies: Piece[] = [];
-    for (let i = 0; i < this.game.pieces.length; i++) {
-      const piece = this.game.pieces[i];
+    for (let i = 0; i < this.data.pieces.length; i++) {
+      const piece = this.data.pieces[i];
       if (piece.color !== this.color && piece.type !== PieceType.Empty)
         enemies.push(piece);
     }
@@ -85,11 +85,11 @@ export abstract class Piece {
   protected getRelativeNeighbor(xDelta: i16, yDelta: i16): Piece | null {
     const pos = this.getRelativePosition(xDelta, yDelta);
     if (!pos) return null;
-    return this.game.pieces[pos.toIndex()];
+    return this.data.pieces[pos.toIndex()];
   }
 
   protected getNeighbor(pos: Position): Piece | null {
-    return this.game.pieces[pos.toIndex()];
+    return this.data.pieces[pos.toIndex()];
   }
 
   public didMove(from: Position, to: Position): void {}

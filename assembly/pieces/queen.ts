@@ -1,10 +1,10 @@
-import { Game } from "../game";
+import { GameData } from "../game";
 import { Piece } from "../piece";
 import { Position } from "../position";
 import { PieceColor, PieceType } from "../types";
 
 export class Queen extends Piece {
-  public constructor(color: PieceColor, index: u8, game: Game) {
+  public constructor(color: PieceColor, index: u8, game: GameData) {
     super(PieceType.Queen, color, index, game);
   }
   protected possibleMoves(): Array<Position | null> {

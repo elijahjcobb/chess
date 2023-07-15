@@ -1,10 +1,10 @@
-import { Game } from "../game";
+import { GameData } from "../game";
 import { Piece } from "../piece";
 import { Position } from "../position";
 import { PieceColor, PieceType } from "../types";
 
 export class Knight extends Piece {
-  public constructor(color: PieceColor, index: u8, game: Game) {
+  public constructor(color: PieceColor, index: u8, game: GameData) {
     super(PieceType.Knight, color, index, game);
   }
 

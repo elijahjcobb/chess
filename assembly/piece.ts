@@ -45,6 +45,16 @@ export abstract class Piece {
     return `${this.color} ${this.type} at ${this.position.toString()}`;
   }
 
+  public enemies(): Piece[] {
+    const enemies: Piece[] = [];
+    for (let i = 0; i < this.game.pieces.length; i++) {
+      const piece = this.game.pieces[i];
+      if (piece.color !== this.color && piece.type !== PieceType.Empty)
+        enemies.push(piece);
+    }
+    return enemies;
+  }
+
   protected checkPieceForEmptyOrEnemy(x: i16, y: i16): Piece | null {
     const piece = this.getRelativeNeighbor(x, y);
     if (piece) {

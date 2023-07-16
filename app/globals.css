@@ -4,6 +4,37 @@
   box-sizing: border-box;
 }
 
+:root {
+  --sp: 4px;
+  --sp2: 8px;
+  --sp3: 12px;
+  --sp4: 16px;
+  --sp5: 20px;
+  --sp6: 24px;
+  --sp7: 28px;
+  --sp8: 32px;
+  --sp9: 36px;
+  --sp10: 40px;
+  --sp11: 44px;
+  --sp12: 48px;
+  --sp13: 52px;
+  --sp14: 56px;
+  --sp15: 60px;
+  --sp16: 64px;
+  --bg-rgb: 1, 22, 39;
+  --bg: rgb(var(--bg-rgb));
+  --black: black;
+  --lightSquare: #4281a4;
+  --darkSquare: #1b5a9d;
+  --lightPiece: #cbe0f6;
+  --darkPiece: #091e34;
+  --highlightSquare: #d2f898;
+  --killableSquare: #960200;
+  --boardBorder: var(--bg);
+  --pri: var(--lightPiece);
+}
+
 body {
-  background-color: rgb(8, 7, 26);
+  background-color: var(--bg);
+  color: var(--pri);
 }

@@ -2,7 +2,7 @@
 
 import loader from "@assemblyscript/loader";
 import { useEffect, useState } from "react";
-import { Board } from "./board";
+import { Game } from "./game";
 import { Functions, PieceType, PieceColor, Square, GameState } from "./types";
 
 async function initWasm(onEmit: (wasm: {
@@ -91,7 +91,7 @@ export default function Page(): JSX.Element {
   useEffect(() => {
     initWasm(w => {
       const { pieces, state, turn } = w
-      setSquares(pieces);
+      setSquares(pieces.slice(0, 64));
       setGameState(state);
       setTurnColor(turn);
     }).then(setWasm);
@@ -107,5 +107,5 @@ export default function Page(): JSX.Element {
 
   if (!wasm || loading) return <div>Loading</div>
 
-  return <Board loading={loading} turn={turnColor} gameState={gameState} wasm={wasm} squares={squares} />
+  return <Game loading={loading} turn={turnColor} gameState={gameState} wasm={wasm} squares={squares} />
 }

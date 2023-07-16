@@ -1,0 +1,42 @@
+.sidebar {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  border: solid var(--sp4) var(--darkSquare);
+  border-top-left-radius: var(--sp4);
+  border-bottom-left-radius: var(--sp4);
+  box-shadow: 0 0 var(--sp2) var(--darkSquare);
+}
+
+.turns {
+  display: flex;
+  background: var(--darkSquare);
+}
+
+.turnPreview {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--sp8);
+  margin-top: calc(-1 * var(--sp4));
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  color: var(--lightPiece);
+  opacity: 0.25;
+  transform: translateY(12px);
+  transition: 125ms ease-in-out;
+}
+
+.turnPreviewDark .icon {
+  color: var(--darkPiece);
+}
+
+.turnPreviewActive .icon {
+  transform: scale(1.5) translateY(0);
+  opacity: 1;
+}

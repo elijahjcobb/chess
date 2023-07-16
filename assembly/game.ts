@@ -1,4 +1,5 @@
 import { encodeSquare } from "./coding";
+import { emitData } from "./emit";
 import { Piece } from "./piece";
 import { Bishop } from "./pieces/bishop";
 import { EmptySpace } from "./pieces/empty";
@@ -9,10 +10,6 @@ import { Queen } from "./pieces/queen";
 import { Rook } from "./pieces/rook";
 import { Position } from "./position";
 import { GameState, PieceColor, PieceType } from "./types";
-
-
-@external("env", "emitData")
-export declare function emitData(gameData: u8[]): void;
 
 export class GameData {
   public pieces: StaticArray<Piece>;

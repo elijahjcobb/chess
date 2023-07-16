@@ -1,4 +1,3 @@
-import { AI } from "./ai";
 import { encodeSquare } from "./coding";
 import { Piece } from "./piece";
 import { Bishop } from "./pieces/bishop";
@@ -10,6 +9,10 @@ import { Queen } from "./pieces/queen";
 import { Rook } from "./pieces/rook";
 import { Position } from "./position";
 import { GameState, PieceColor, PieceType } from "./types";
+
+
+@external("env", "emitData")
+export declare function emitData(gameData: u8[]): void;
 
 export class GameData {
   public pieces: StaticArray<Piece>;
@@ -36,11 +39,9 @@ export class GameData {
 
 export class Game {
   public data: GameData;
-  public ai: AI;
 
   public constructor() {
     const data = GameData.empty();
-    this.ai = new AI(PieceColor.White, data, this.movePiece);
     const pieces = new StaticArray<Piece>(64);
     const state = GameState.Turn;
     const turn = PieceColor.Black;
@@ -73,6 +74,8 @@ export class Game {
     data.state = state;
     data.turn = turn;
     this.data = data;
+
+    this.emit();
   }
 
   public getState(): u8[] {
@@ -159,9 +162,12 @@ export class Game {
     this.checkCheck();
     if (this.data.turn == PieceColor.Black) this.data.turn = PieceColor.White;
     else this.data.turn = PieceColor.Black;
+
+    this.emit();
   }
 
-  public moveAi(): void {
-    this.ai.takeTurn();
+  public emit(): void {
+    const state = this.getState();
+    emitData(state);
   }
 }

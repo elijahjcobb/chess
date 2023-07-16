@@ -27,10 +27,9 @@ export enum GameState {
 }
 
 export interface Functions {
-  getGameState(): { pieces: Square[]; state: GameState; turn: PieceColor };
   canPieceMove(from: number, to: number): boolean;
   possibleMoves(index: number): number[];
   movePiece(from: number, to: number): void;
   getU8Array(pointer: number): number[];
-  moveAi(): void;
+  ping(): void;
 }

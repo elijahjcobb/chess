@@ -88,12 +88,14 @@ export function Board({
 	squares,
 	wasm,
 	gameState,
-	turn
+	turn,
+	loading
 }: {
 	wasm: Functions;
 	squares: Square[];
 	gameState: GameState;
 	turn: PieceColor;
+	loading: boolean;
 }): JSX.Element {
 
 	const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
@@ -137,7 +139,5 @@ export function Board({
 		<code style={{ color: 'white', fontSize: 32 }}>Status: {GameState[gameState]}</code>
 		<br />
 		<code style={{ color: 'white', fontSize: 32 }}>Turn: {PieceColor[turn]}</code>
-		<br />
-		{/* <button onClick={wasm.moveAi} style={{ padding: 8 }}>AI</button> */}
 	</>
 }

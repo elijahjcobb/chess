@@ -18,6 +18,6 @@ export function movePiece(from: u8, to: u8): void {
   game.movePiece(from, to);
 }
 
-export function moveAi(): void {
-  game.moveAi();
+export function ping(): void {
+  game.emit();
 }

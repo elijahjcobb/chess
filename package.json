@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run asbuild:release && next build",
+    "build": "npm run asbuild && next build",
     "start": "next start",
     "lint": "next lint",
     "asbuild:debug": "asc assembly/index.ts --target debug",
